@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+
+.login__container{
+  display:flex;
+  justify-content: center;
+  align-content:center ;
+  background-color:#422627;
+  height: 100vh;
+}
+
+.login__form{
+  height: 300px;
+  background-color:#756966;
+  margin: 50px;
+  border-radius: 10px;
+  width: 300px;
+}
+.register__container{
+  display:flex;
+  justify-content: center;
+  align-content:center ;
+  background-color:#422627;
+  height: 100vh;
+}
+
+.register__form{
+  height: 400px;
+  background-color:#756966;
+  margin: 50px;
+  border-radius: 10px;
+  width: 400px;
+}
+input,select{
+  padding:10px;
+  border-radius: 5px;
+  outline-style: none;
+}
+
+button{
+  padding: 10px;border-radius: 5px;
+  outline-style: none;
+
+}
+
+button:hover{
+  cursor: pointer;
+  color: rgb(134, 65, 65);
+}
+
+label{
+  font-size: small;
+  font-family: 'Courier New', Courier, monospace;
+}
