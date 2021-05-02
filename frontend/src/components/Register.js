@@ -10,6 +10,8 @@ export default class Register extends Component {
              email:'',
              password:'',
              name:'',
+             birthDate:'',
+             confirmPassword:''
         }
     }
 
@@ -39,23 +41,50 @@ export default class Register extends Component {
 
     onRegister = (e) => {
         e.preventDefault()
-        const {email,password,name} = this.state;
-        axios.post(`${urls.serverUrl}auth/register`,{
-            email:email,
-            password:password,
-            name:name,
-        }).then(res=>{
-            console.log('success',res)
-            let token = res.data.token;
-            localStorage.setItem('token',token)
-            alert('You are Registered Successfully!! ')
-            this.sendWelcomeMail()
 
-        })
-        .catch(err=>{
-            console.log('failure',err.response.data)
-            alert(err.response.data.msg)
-        })
+        let date_regex = /^(0[1-9]|1[0-2])-(0[1-9]|1\d|2\d|3[01])-(19|20)\d{2}$/ ;
+        let email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        let password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{8,}$/
+        const {email,password,name,birthDate,confirmPassword} = this.state;
+        if(!name){
+            alert('Please enter name')
+        }
+        else if(!email_regex.test(email)){
+            alert('Please enter valid email address')
+        }
+        else if(!date_regex.test(birthDate)){
+          alert('Please enter Date in MM-DD-YYYY format')
+        }
+        else if(!password){
+            alert('Please enter Password')
+        }
+        else if(!password_regex.test(password)){
+            alert('Password should contain one uppercase letter one smallcase letter and one number with minimum length of 8 characters')
+        }
+        else{
+            if(password == confirmPassword){
+            axios.post(`${urls.serverUrl}auth/register`,{
+                email:email,
+                password:password,
+                name:name,
+                birthDate:birthDate
+            }).then(res=>{
+                console.log('success',res)
+                let token = res.data.token;
+                localStorage.setItem('token',token)
+                alert('You are Registered Successfully!! ')
+                this.sendWelcomeMail()
+    
+            })
+            .catch(err=>{
+                console.log('failure',err.response.data)
+                alert(err.response.data.msg)
+            })
+        }
+        else{
+            alert('password not matched')
+        }
+        }
     }
 
     render() {
@@ -72,8 +101,16 @@ export default class Register extends Component {
               <input type="text" name="email" onChange={this.handleChange}/>
              </div>
              <div style={{margin:'15px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
+            <label>Birth Date</label>
+              <input type="text" placeholder="Ex. MM-DD-YYYY" name="birthDate" onChange={this.handleChange}/>
+             </div>
+             <div style={{margin:'15px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
               <label>Password</label>
               <input type="password" name="password" onChange={this.handleChange}/>
+            </div>
+            <div style={{margin:'15px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
+              <label>Confirm Password</label>
+              <input type="password" name="confirmPassword" onChange={this.handleChange}/>
             </div>
             <div style={{display:'flex',flexDirection:'column'}}>
             <button  onClick={this.onRegister} style={{margin:'10px'}} >Register</button>

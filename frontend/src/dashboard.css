@@ -1,0 +1,85 @@
+html,
+body {
+  -webkit-overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.margintopleft {
+  margin-top: 130px;
+  margin-left: 260px;
+  /* width: -webkit-fill-available;
+  width: -moz-fill-available;
+  
+  width: fill-available; */
+
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  
+
+}
+/* @-moz-document url-prefix() {
+  .margintopleft {
+    width: 100%;
+  }
+} */
+@media(max-width:1200px) {
+  .margintopleft {
+    margin-left: 0;
+  }
+}
+
+.widthlogoadmin {
+  width: 150px;
+}
+
+.centertitleadmin {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+}
+
+/* .MuiButton-root {
+
+  color: black !important;
+} */
+.blackcolor {
+  color: black !important;
+  border-bottom: 0 !important;
+}
+
+.MuiTableCell-body {
+  color: black !important;
+}
+.MuiSvgIcon-colorPrimary,.MuiTypography-colorPrimary{
+  color: rgba(0,0,0,0.9) !important;
+}
+.MuiFab-primary,.MuiLinearProgress-barColorPrimary{
+  background:#707070 !important;
+}
+.MuiTableCell-root {
+  font-size: 1.1rem !important;
+  padding: 10px !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #707070 !important;
+}
+.MuiButton-containedPrimary{
+  background: #707070 !important;
+}
+.MuiButton-containedSecondary{
+  background: #4b9e79 !important;
+}
+.MuiFormHelperText-root {
+  font-size: 0.9rem !important;
+}
+
+.overflowtable {
+  overflow: auto;
+}
+
+/* .borderzero {
+  border: 0 !important;
+} */
