@@ -12,7 +12,7 @@
 
 3. get yourself registered
 
-4.login with registered account
+4. login with registered account
 
 ## For Server Run
 
