@@ -1,4 +1,4 @@
-Note : Beacuse Of Time constraints i did not focus much on user interface and redux rather i have implemented all the functionalities. 
+
 
 # This project Is Done For IBL infotech under Practical Task.
 
