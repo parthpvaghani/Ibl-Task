@@ -34,8 +34,9 @@ userRouter.post("/register", function (req, res, next) {
             if (hash) {
               let newuser = new Users({
                 email: body.email,
-                fullName: body.name,
+                name: body.name,
                 passwordHash: hash,
+                birthDate:body.birthDate
               });
               newuser.save(function (err, user) {
                 if (err) {

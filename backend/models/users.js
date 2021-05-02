@@ -5,13 +5,17 @@ var userSchema = new Schema({
   
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
+  },
+  birthDate:{
+    type:String,
   },
   role:{
     type: String,
     required:false,
   },
-  fullName: {
+  name: {
     type: String,
     required: true
   },
