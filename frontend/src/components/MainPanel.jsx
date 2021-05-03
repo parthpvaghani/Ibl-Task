@@ -1,12 +1,9 @@
 /* eslint-disable  */
-// combined exporesult(table)
-
 // i have used all data from the local state since we are not storing it on db
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import React, { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
 import PropTypes from "prop-types";
 import one from '../songs/1.mp3'
 import two from '../songs/2.mp3'
@@ -24,16 +21,11 @@ import Avatar from '@material-ui/core/Avatar';
 import {
   Box,
   Container,
-  Button,
   Card,
   Typography,
   Tooltip,
-  Zoom,
   makeStyles,
-  useTheme,
-  withStyles
 } from "@material-ui/core";
-import { Search as SearchIcon } from "react-feather";
 import "react-multi-carousel/lib/styles.css";
 import Page from "./page";
 
@@ -73,8 +65,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const MainPanel = ({ className, sideOptionSelected, ...rest }) => {
-
-
 
   const [songs, setSongs] = useState([{
     id: 1,
@@ -118,7 +108,6 @@ const MainPanel = ({ className, sideOptionSelected, ...rest }) => {
   }
 
   const setArtist = (index) => {
-    // alert(index)
     setCurrArtist(artists[index])
   }
 
@@ -138,8 +127,6 @@ const MainPanel = ({ className, sideOptionSelected, ...rest }) => {
     <Page className={classes.root} title="Music Hub">
       <Container maxWidth={false}>
 
-
-
         {
           artist ?
 
@@ -152,7 +139,7 @@ const MainPanel = ({ className, sideOptionSelected, ...rest }) => {
                 </Box>
 
               </Box>
-              <Card className={classes.exporesultroot} style={{padding:'20px'}}>
+              <Card className={classes.exporesultroot} style={{ padding: '20px' }}>
                 <Box md={12}>
                   <Avatar alt="artist" src={ArtistLogo} className={classes.large} />
                   <Typography variant="h4" gutterBottom>
@@ -179,72 +166,69 @@ const MainPanel = ({ className, sideOptionSelected, ...rest }) => {
               </div>
               <hr />
               <Box mt={3} mb={3}>
-                  <Tooltip title="Click On Currently Viewable Artist to Know More">
-                <Card className={classes.exporesultroot}>
-                  <Box md={12}>
-                    <Carousel showIndicators={false} renderIndicator={false} onClickItem={setArtist} showStatus={false}>
+                <Tooltip title="Click On Currently Viewable Artist to Know More">
+                  <Card className={classes.exporesultroot}>
+                    <Box md={12}>
+                      <Carousel showIndicators={false} renderIndicator={false} onClickItem={setArtist} showStatus={false}>
 
-                      {
-                        artists.map(artist => {
-                          return (
-                            <div>
-                              <img src={ArtistLogo} style={{ width: '70px' }} />
-                            </div>
-                          )
-                        })
-                      }
+                        {
+                          artists.map(artist => {
+                            return (
+                              <div>
+                                <img src={ArtistLogo} style={{ width: '70px' }} />
+                              </div>
+                            )
+                          })
+                        }
 
-                    </Carousel>
-                  </Box>
-                </Card>
-                    </Tooltip>
-              </Box>
-              <Box mt={3} mb={3}>
-              <Tooltip title="Click On Currently Viewable Song or thumb to Play">
-                <Card className={classes.exporesultroot}>
-                  <Box md={12} >
-                    <Carousel showIndicators={false} renderIndicator={false} onClickItem={setMusic} onClickThumb={setMusic} showStatus={false}>
-
-                      {
-                        songs.map(song => {
-                          return (
-                            <div>
-                              <img src={Logo} style={{ width: '70px' }} />
-                            </div>
-                          )
-                        })
-                      }
-
-                    </Carousel>
-                  </Box>
-                </Card>
+                      </Carousel>
+                    </Box>
+                  </Card>
                 </Tooltip>
               </Box>
               <Box mt={3} mb={3}>
-                <Card className={classes.exporesultroot}>
-                  <Box md={12}>
-                    <AudioPlayer
-                      autoPlay
-                      src={music}
-                      onPlay={e => console.log("onPlay")}
-                    // other props here
-                    />
+                <Tooltip title="Click On Currently Viewable Song or thumb to Play">
+                  <Card className={classes.exporesultroot}>
+                    <Box md={12} >
+                      <Carousel showIndicators={false} renderIndicator={false} onClickItem={setMusic} onClickThumb={setMusic} showStatus={false}>
 
-                  </Box>
-                </Card>
+                        {
+                          songs.map(song => {
+                            return (
+                              <div>
+                                <img src={Logo} style={{ width: '70px' }} />
+                              </div>
+                            )
+                          })
+                        }
+
+                      </Carousel>
+                    </Box>
+                  </Card>
+                </Tooltip>
               </Box>
+
             </>
         }
+        <Box mt={3} mb={3}>
+          <Card className={classes.exporesultroot}>
+            <Box md={12}>
+              <AudioPlayer
+                autoPlay
+                src={music}
+                onPlay={e => console.log("onPlay")}
+              // other props here
+              />
+
+            </Box>
+          </Card>
+        </Box>
       </Container>
 
 
 
     </Page>
   );
-
-  function onClickMenuFeed(value) {
-    setProductList(true);
-  }
 };
 
 MainPanel.propTypes = {

@@ -1,9 +1,5 @@
 /* eslint-disable */
 
-
-
-
-
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AlbumIcon from '@material-ui/icons/Album';
@@ -75,7 +71,6 @@ const DashboardSidebar = ({
 }) => {
   const classes = useStyles();
 
-
   useEffect(
     () => {
       if (openMobile && onMobileClose) {
@@ -115,10 +110,6 @@ const DashboardSidebar = ({
 
     sideOptionSelected(value);
     onMobileClose();
-  }
-
-  function onLogout() {
-    window.location.href = '/'
   }
 
   return (

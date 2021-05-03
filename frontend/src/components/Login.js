@@ -35,15 +35,17 @@ export default class Login extends Component {
             window.location.href='/dashboard'
         }).catch(err=>{
             console.log('failure',err)
-            alert(err.response.data.msg)
+            // alert(err.response.data.msg)
         })
 
     }
 
     render() {
         return (
+            <>
             <div className="login__container">
             <form onSubmit={this.onLogin} className="login__form">
+            <h1 style={{textAlign: 'center'}}>Music Player App</h1>
             <div style={{margin:'15px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
             <label> Email Id </label>
               <input type="text" name="email" onChange={this.handleChange}/>
@@ -58,6 +60,7 @@ export default class Login extends Component {
             </div>
             </form>
             </div>
+            </>
         )
     }
 }

@@ -1,5 +1,4 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/jsx-indent */
+/* eslint-disable */
 
 import React, { forwardRef } from "react";
 import { Helmet } from "react-helmet";

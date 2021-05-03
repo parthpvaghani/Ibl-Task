@@ -17,7 +17,6 @@ export default class Register extends Component {
 
     componentDidMount(){
         localStorage.clear()
-
     }
     handleChange = (e) => {
         e.preventDefault()
@@ -26,18 +25,6 @@ export default class Register extends Component {
         })
     }
 
-
-    sendWelcomeMail = () => {
-        const {email} = this.state;
-        axios.post(`${urls.serverUrl}mail/sendregsuccessmail`,{
-            email:email,
-        }).then(res=>{
-            console.log('success',res)
-        })
-        .catch(err=>{
-            console.log('failure',err.response.data)
-        })
-    }
 
     onRegister = (e) => {
         e.preventDefault()
@@ -73,7 +60,6 @@ export default class Register extends Component {
                 let token = res.data.token;
                 localStorage.setItem('token',token)
                 alert('You are Registered Successfully!! ')
-                this.sendWelcomeMail()
     
             })
             .catch(err=>{
